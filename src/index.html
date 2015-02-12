@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <script src="https://code.angularjs.org/1.2.16/angular.js"></script>
+  </head>
+
+  <body>
+
+    <div ng-app="rankingApp" ng-controller="rankingController">
+      <input ng-model="newRank">
+      <button ng-click="addRank()">Add Item</button>
+      <p>
+        <button ng-click="sortOrder='name'">Sort By Name</button>
+        <button ng-click="sortOrder='score'">Sort By Score</button>
+      </p>
+
+      <ul>
+        <li ng-repeat="ranking in rankings | orderBy:sortOrder">
+          {{ ranking.name + ', ' + ranking.score}}
+          <button ng-click="increase(ranking)">up</button>
+          <button ng-click="decrease(ranking)">down</button>
+        </li>
+      </ul>
+    </div>
+
+    <script src="js/app.js"> </script>
+    <script src="js/rankingController.js"> </script>
+
+  </body>
+</html>
